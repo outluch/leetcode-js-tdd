@@ -1,0 +1,19 @@
+const fs = require('fs')
+const assert = require('assert')
+const toStr = JSON.stringify
+
+const problems = fs.readdirSync('./problems')
+problems.forEach(srcPath => {
+  const { fn, cases } = require(`../problems/${srcPath}`)
+  describe(srcPath.slice(srcPath.lastIndexOf('/') + 1), () => {
+    run(fn, cases)
+  })
+})
+
+function run(fn, cases) {
+  cases.forEach(c => {
+    it(`( ${c.in.map(toStr).join(', ')} ) -> ${toStr(c.out)}`, () => {
+      assert.deepEqual(fn.apply(null, c.in), c.out)
+    })
+  })
+}

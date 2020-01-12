@@ -1,0 +1,17 @@
+{
+  "name": "leetcode-js-tdd",
+  "version": "1.0.0",
+  "description": "Simple boilerplate for leetcode warriors",
+  "scripts": {
+    "start": "mocha -w"
+  },
+  "keywords": [
+    "leetcode",
+    "tdd"
+  ],
+  "author": "outluch",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^7.0.0"
+  }
+}
