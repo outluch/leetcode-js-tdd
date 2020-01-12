@@ -5,6 +5,7 @@ const toStr = JSON.stringify
 const problems = fs.readdirSync('./problems')
 problems.forEach(srcPath => {
   const { fn, cases } = require(`../problems/${srcPath}`)
+  if (!fn || !cases) return
   describe(srcPath.slice(srcPath.lastIndexOf('/') + 1), () => {
     run(fn, cases)
   })
