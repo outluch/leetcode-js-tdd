@@ -14,7 +14,9 @@ problems.forEach(srcPath => {
 function run(fn, cases) {
   cases.forEach(c => {
     it(`( ${c.in.map(toStr).join(', ')} ) -> ${toStr(c.out)}`, () => {
-      assert.deepEqual(fn.apply(null, c.in), c.out)
+      if (typeof c.out === 'function') {
+        assert.ok(c.out(fn.apply(null, c.in)))
+      } else assert.deepEqual(fn.apply(null, c.in), c.out)
     })
   })
 }
