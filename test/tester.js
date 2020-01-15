@@ -34,8 +34,8 @@ function run(fn, cases) {
 }
 
 fs.readdirSync('./problems').forEach(srcPath => {
-  const { fn, cases } = require(`../problems/${srcPath}`)
-  if (!fn || !cases) return
+  const { ignore, fn, cases } = require(`../problems/${srcPath}`)
+  if (ignore || !fn || !cases) return
   describe(srcPath.slice(srcPath.lastIndexOf('/') + 1), () => {
     run(fn, cases)
   })
