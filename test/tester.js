@@ -23,7 +23,7 @@ function run(fn, cases) {
         ? '[checkfn]'
         : _.truncate(toStr(c.out), truncOpts)
 
-    const timeStr = `${(hrend[0] + hrend[1] / 1000000).toFixed(6)}`
+    const timeStr = `${hrend[0]}.${_.padEnd(hrend[1], 10, '0').slice(0, 6)}`
 
     it(`${timeStr}: ( ${inStr} ) -> ${outStr}`, () => {
       if (typeof c.out === 'function') {
