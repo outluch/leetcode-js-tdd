@@ -11,6 +11,7 @@ Simple boilerplate for leetcode warriors
 
 ```js
 module.exports = {
+  // ignore: true,
   fn: twoSum,
   cases: [
     { in: [[2, 7, 11, 15], 9], out: [0, 1] },
@@ -21,6 +22,12 @@ module.exports = {
 
 5. `npm start`
 
-## TODO
+## Features
 
-Make it possible to filter problems to run, because some of them can be too cpu heavy to run on each iteration.
+### Ignoring problems
+
+You can ignore problem if you export `ignore: true`
+
+### Testing for unordered results
+
+If you are asked to provide an array of solutions without particular order, you can use helper method to test your functions. See `49.group-anagrams.js`
