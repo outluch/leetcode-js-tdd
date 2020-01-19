@@ -2,7 +2,18 @@ const fs = require('fs')
 const assert = require('assert')
 const _ = require('lodash')
 
-const toStr = JSON.stringify
+const toStr = function(input) {
+  let cache = new Set()
+  let result = JSON.stringify(input, function(key, value) {
+    if (typeof value === 'object' && value !== null) {
+      if (cache.has(value)) return
+      cache.add(value)
+    }
+    return value
+  })
+  cache = null
+  return result
+}
 
 const truncOpts = { length: 30, omission: ' ...' }
 
